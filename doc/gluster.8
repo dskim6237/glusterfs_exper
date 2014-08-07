@@ -1,0 +1,125 @@
+
+.\"  Copyright (c) 2006-2012 Red Hat, Inc. <http://www.redhat.com>
+.\"  This file is part of GlusterFS.
+.\"
+.\"  This file is licensed to you under your choice of the GNU Lesser
+.\"  General Public License, version 3 or any later version (LGPLv3 or
+.\"  later), or the GNU General Public License, version 2 (GPLv2), in all
+.\"  cases as published by the Free Software Foundation.
+.\"
+.\"
+.TH Gluster 8 "Gluster command line utility" "07 March 2011" "Gluster Inc."
+.SH NAME
+gluster - Gluster Console Manager (command line utility)
+.SH SYNOPSIS
+.B gluster
+.PP
+To run the program and display gluster prompt:
+.PP
+.B gluster
+.PP
+(or)
+.PP
+To specify a command directly:
+.PP
+.B gluster
+.I [commands] [options]
+
+.SH DESCRIPTION
+The Gluster Console Manager is a command line utility for elastic volume management. You can run the gluster command on any export server. The command enables administrators to perform cloud operations, such as creating, expanding, shrinking, rebalancing, and migrating volumes without needing to schedule server downtime.
+.SH COMMANDS
+
+.SS "Volume Commands"
+.PP
+.TP
+
+\fB\ volume info [all|<VOLNAME>] \fR
+Display information about all volumes, or the specified volume.
+.TP
+\fB\ volume create <NEW-VOLNAME> [stripe <COUNT>] [replica <COUNT>] [transport <tcp|rdma|tcp,rdma>] <NEW-BRICK> ... \fR
+Create a new volume of the specified type using the specified bricks and transport type (the default transport type is tcp).
+To create a volume with both transports (tcp and rdma), give 'transport tcp,rdma' as an option.
+.TP
+\fB\ volume delete <VOLNAME> \fR
+Delete the specified volume.
+.TP
+\fB\ volume start <VOLNAME> \fR
+Start the specified volume.
+.TP
+\fB\ volume stop <VOLNAME> [force] \fR
+Stop the specified volume.
+.TP
+\fB\ volume rename <VOLNAME> <NEW-VOLNAME> \fR
+Rename the specified volume.
+.TP
+\fB\ volume set <VOLNAME> <OPTION> <PARAMETER> [<OPTION> <PARAMETER>] ... \fR
+Set the volume options.
+.TP
+\fB\ volume help \fR
+Display help for the volume command.
+.SS "Brick Commands"
+.PP
+.TP
+\fB\ volume add-brick <VOLNAME> <NEW-BRICK> ... \fR
+Add the specified brick to the specified volume.
+.TP
+\fB\ volume remove-brick <VOLNAME> <BRICK> ... \fR
+Remove the specified brick from the specified volume.
+.IP
+.B Note:
+If you remove the brick, the data stored in that brick will not be available. You can migrate data from one brick to another using
+.B replace-brick
+option.
+.TP
+\fB\ volume rebalance-brick <VOLNAME>(<BRICK> <NEW-BRICK>) start \fR
+Start rebalancing the specified volume.
+.TP
+\fB\ volume rebalance <VOLNAME> stop \fR
+Stop rebalancing the specified volume.
+.TP
+\fB\ volume rebalance <VOLNAME> status \fR
+Display the rebalance status of the specified volume.
+.TP
+\fB\ volume replace-brick <VOLNAME> (<BRICK> <NEW-BRICK>) start|pause|abort|status|commit \fR
+Replace the specified brick.
+.SS "Log Commands"
+.TP
+\fB\ volume log filename <VOLNAME> [BRICK] <DIRECTORY> \fB
+Set the log directory for the corresponding volume/brick.
+.TP
+\fB\ volume log locate <VOLNAME> [BRICK] \fB
+Locate the log file for corresponding volume/brick.
+.TP
+\fB\ volume log rotate <VOLNAME> [BRICK] \fB
+Rotate the log file for corresponding volume/brick.
+.SS "Peer Commands"
+.TP
+\fB\ peer probe <HOSTNAME> \fR
+Probe the specified peer.
+.TP
+\fB\ peer detach <HOSTNAME> \fR
+Detach the specified peer.
+.TP
+\fB\ peer status \fR
+Display the status of peers.
+.TP
+\fB\ peer help \fR
+Display help for the peer command.
+.SS "Other Commands"
+.TP
+\fB\ help \fR
+Display the command options.
+.TP
+\fB\ quit \fR
+Exit the gluster command line interface.
+
+.SH FILES
+/var/lib/glusterd/*
+.SH SEE ALSO
+.nf
+\fBfusermount\fR(1), \fBmount.glusterfs\fR(8), \fBglusterfs\fR(8), \fBglusterd\fR(8)
+\fR
+.fi
+.SH COPYRIGHT
+.nf
+Copyright(c) 2006-2011  Gluster, Inc.  <http://www.gluster.com>
