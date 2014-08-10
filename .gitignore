@@ -36,4 +36,14 @@
 Makefile
 
 # Files
-
+cli/src/.libs/gluster
+cli/src/gluster
+contrib/fuse-util/fusermount-glusterfs
+extras/geo-rep/.libs/gsync-sync-gfid
+extras/geo-rep/gsync-sync-gfid
+geo-replication/src/.libs/gsyncd
+geo-replication/src/gsyncd
+glusterfsd/src/.libs/glusterfsd
+glusterfsd/src/glusterfsd
+heal/src/.libs/glfsheal
+heal/src/glfsheal
